@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t hollydevops/react-docker-travis-beanstalk -f Dockerfile.dev .
+
+script: 
+  - docker run -e CI=true hollydevops/react-docker-travis-beanstalk npm run test
