@@ -7,15 +7,3 @@ before_install:
 
 script: 
   - docker run -e CI=true hollydevops/react-docker-travis-beanstalk npm run test
-
-deploy:
-  provider: elasticbeanstalk
-  region: "us-east-1"
-  app: "frontend"
-  env: "Frontend-env"
-  bucket_name: "elasticbeanstalk-us-east-1-490004614696"
-  bucket_path: "frontend"
-  on:
-    branch: main
-  access_key_id: "$AWS_ACCESS_KEY"
-  secret_access_key: "AWS_SECRET_KEY"
