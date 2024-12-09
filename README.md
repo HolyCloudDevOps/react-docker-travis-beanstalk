@@ -107,11 +107,15 @@ For deploying this application to AWS Elastic Beanstalk, make sure you have your
 5. Scroll down to the **Platform** section and select **Docker** as the platform. This will auto-select several default options. Change the **Platform branch** to **Docker running on 64bit Amazon Linux 2** (Note: The new 2023 branch has issues with single-container deployments).
 6. Scroll down to the **Presets** section and ensure **free tier eligible** is selected.
 7. Click the **Next** button to proceed to Step #2.
-8. In the **Service Access** configura
+8. In the **Service Access** configuration form.
+Select Create and use new service role and name it aws-elasticbeanstalk-service-role. You will then need to set the EC2 instance profile to the aws-elasticbeanstalk-ec2-role created earlier (this will likely be auto-populated for you).
+10. Click the Skip to Review button as Steps 3-6 are not applicable.
+11. Click the Submit button and wait for your new Elastic Beanstalk application and environment to be created and launch.
+12. Click the link below the checkmark under Domain. This should open the application in your browser and display a Congratulations message.
 
 
 ## 5. **Deploy to Elastic Beanstalk**: 
-   The application is configured for deployment via **TravisCI**. It automatically pushes the changes to **Elastic Beanstalk** whenever you push to the `main` branch. Check `.travis.yml` file and add your env information.
+   The application is configured for deployment via **TravisCI**. It automatically pushes the changes to **Elastic Beanstalk** whenever you push to the `main` branch. Check `.travis.yml` file and add your env information. Add your `Environment Variables` in settings of your Travis.ci repository.
 
 ## 6. **Continuous Integration with TravisCI**: 
    When you push changes to the `main` branch, **TravisCI** will automatically trigger a build and deployment process, ensuring that your app is always up-to-date in the cloud.
