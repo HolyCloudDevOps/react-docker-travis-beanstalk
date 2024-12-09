@@ -115,7 +115,7 @@ Select Create and use new service role and name it aws-elasticbeanstalk-service-
 
 
 ## 5. **Deploy to Elastic Beanstalk**: 
-   The application is configured for deployment via **TravisCI**. It automatically pushes the changes to **Elastic Beanstalk** whenever you push to the `main` branch. Check `.travis.yml` file and add your env information. Add your `Environment Variables` in settings of your Travis.ci repository.
+   The application is configured for deployment via **TravisCI**. Add Travis.ci to your repository. It automatically pushes the changes to **Elastic Beanstalk** whenever you push to the `main` branch. Check `.travis.yml` file and add your env information. Add your `Environment Variables` in settings of your Travis.ci repository.
 
 ## 6. **Continuous Integration with TravisCI**: 
    When you push changes to the `main` branch, **TravisCI** will automatically trigger a build and deployment process, ensuring that your app is always up-to-date in the cloud.
