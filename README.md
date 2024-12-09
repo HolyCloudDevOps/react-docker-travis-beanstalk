@@ -1,74 +1,126 @@
-<<<<<<< HEAD
-# react-docker-travis-beanstalk
-=======
-# Getting Started with Create React App
+# React Application with Docker and AWS Elastic Beanstalk
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Why Use Elastic Beanstalk over ECS or EC2?
 
-## Available Scripts
+**Elastic Beanstalk** is a Platform-as-a-Service (PaaS) solution that simplifies deploying and managing applications on AWS. Here's why you might choose **Elastic Beanstalk** over **Amazon ECS** (Elastic Container Service) or **EC2** (Elastic Compute Cloud):
 
-In the project directory, you can run:
+- #### **Simplified Management**
+##### **Elastic Beanstalk** handles infrastructure management for you. It takes care of provisioning, load balancing, scaling, and monitoring, allowing you to focus on building your application rather than managing the underlying infrastructure.
 
-### `npm start`
+- #### **Automatic Scaling**
+##### **Elastic Beanstalk** automatically scales your application up or down based on demand, without requiring manual configuration of Auto Scaling groups as you would in **EC2** or **ECS**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- #### **Integrated CI/CD**
+##### **Elastic Beanstalk** easily integrates with Continuous Integration/Continuous Deployment (CI/CD) tools like **Travis CI**, automating the deployment process with minimal manual intervention.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- #### **Less Operational Overhead**
+##### **Elastic Beanstalk** abstracts much of the operational complexity compared to **EC2** or **ECS**. You don’t need to manage underlying EC2 instances or configure ECS clusters. It’s a fully managed service, reducing the need for in-depth infrastructure knowledge.
 
-### `npm test`
+- #### **Docker Support**
+##### **Elastic Beanstalk** natively supports Docker containers, enabling you to deploy containerized applications with minimal setup.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- #### **Managed Service**
+##### **Elastic Beanstalk** is a fully managed service that provides automatic updates, health checks, and monitoring, so you don’t need to worry about system maintenance like with **EC2** or **ECS**.
 
-### `npm run build`
+- #### **Faster Deployment**
+##### **Elastic Beanstalk** simplifies the deployment process, allowing faster deployment of web applications. It requires less configuration compared to setting up **ECS** clusters or **EC2** instances.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- #### **Cost-Effective for Small Teams**
+##### For smaller teams or startups, **Elastic Beanstalk** helps reduce the complexity and administrative overhead, which can save both time and costs compared to managing **EC2** or **ECS** manually.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## **Use Elastic Beanstalk**
+If you're looking for a simplified and managed platform for deploying your application with minimal operational overhead, **Elastic Beanstalk** is the perfect solution. It’s ideal for teams who want to focus on their code and product rather than spending time managing infrastructure. Use **Elastic Beanstalk** for streamlined deployments, automatic scaling, and reduced complexity in your development process.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 2. Technologies Used
 
-### `npm run eject`
+- **React** - JavaScript library for building user interfaces.
+- **Docker** - Platform for developing, shipping, and running applications inside containers.
+- **Docker-compose** - Tool for defining and running multi-container Docker applications.
+- **AWS Elastic Beanstalk** - Platform-as-a-Service (PaaS) for deploying and managing applications in the cloud.
+- **TravisCI** - Continuous Integration and Continuous Deployment (CI/CD) tool for automating the deployment process.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project Overview
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project is built with a basic **React** application, but the focus is primarily on **infrastructure**. The project is set up using **Docker** to provide a reliable and isolated development environment. **Docker-compose** is used to manage multiple containers, and the application is deployed to **AWS Elastic Beanstalk**. **TravisCI** is configured to automate deployment and ensure the application is always up-to-date.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 3. Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To get started with this project locally, follow the steps below:
 
-## Learn More
+### 1. Clone the repository
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2. Set up the environment
 
-### Code Splitting
+To run the React application locally, you need to use the `Dockerfile.dev`. This Dockerfile sets up a development environment where changes you make to the code are reflected in real-time.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 3. Run Docker Compose
 
-### Analyzing the Bundle Size
+Use **Docker Compose** to set up and run your development environment. In the root of the project, run:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+docker-compose -f docker-compose-dev.yml up
+```
 
-### Making a Progressive Web App
+This will start the React application in a container, and you'll be able to view the changes to the code in real-time without needing to rebuild the container every time you make changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 4. Access the Application
 
-### Advanced Configuration
+Once the Docker container is running, open your browser and go to `http://localhost:3000` to see the React application running locally.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 5. Real-time Code Updates
 
-### Deployment
+The `Dockerfile.dev` is configured to watch for changes in the code, so as soon as you update any of your files, those changes will be reflected in the application in real time. You don’t need to restart the Docker container.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 4. Working with AWS Elastic Beanstalk
 
-### `npm run build` fails to minify
+For deploying this application to AWS Elastic Beanstalk, make sure you have your AWS credentials set up and your environment is configured to use Elastic Beanstalk.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> feature
+1. **Create a new Elastic Beanstalk environment**: 
+   If you don't have an environment set up already, you can use the AWS Console or CLI to create one. This will handle the provisioning of resources such as EC2 instances, load balancers, and auto-scaling.
+   
+### Create EC2 IAM Instance Profile
+
+1. Go to the **AWS Management Console**.
+2. In the search bar, type **IAM** and click the **IAM** service.
+3. In the left sidebar, click **Roles** under **Access Management**.
+4. Click the **Create role** button.
+5. Select **AWS Service** under **Trusted entity type**, then select **EC2** under **common use cases**.
+6. Search for **AWSElasticBeanstalk** and select the following policies:
+   - **AWSElasticBeanstalkWebTier**
+   - **AWSElasticBeanstalkWorkerTier**
+   - **AWSElasticBeanstalkMulticontainerDocker**
+7. Click the **Next** button.
+8. Give the role the name: `aws-elasticbeanstalk-ec2-role`.
+9. Click the **Create role** button.
+
+### Create Elastic Beanstalk Environment
+
+1. Go to the **AWS Management Console**.
+2. In the search bar, type **Elastic Beanstalk** and click the **Elastic Beanstalk** service.
+3. If this is your first time using Elastic Beanstalk, you will see a splash page. Click the **Create Application** button. If you've used Elastic Beanstalk before, you will be taken directly to the Elastic Beanstalk dashboard. In this case, click the **Create environment** button. There are 6 steps in the flow you will follow.
+4. Provide an **Application name**, which will automatically populate an **Environment Name**.
+5. Scroll down to the **Platform** section and select **Docker** as the platform. This will auto-select several default options. Change the **Platform branch** to **Docker running on 64bit Amazon Linux 2** (Note: The new 2023 branch has issues with single-container deployments).
+6. Scroll down to the **Presets** section and ensure **free tier eligible** is selected.
+7. Click the **Next** button to proceed to Step #2.
+8. In the **Service Access** configuration form.
+Select Create and use new service role and name it aws-elasticbeanstalk-service-role. You will then need to set the EC2 instance profile to the aws-elasticbeanstalk-ec2-role created earlier (this will likely be auto-populated for you).
+10. Click the Skip to Review button as Steps 3-6 are not applicable.
+11. Click the Submit button and wait for your new Elastic Beanstalk application and environment to be created and launch.
+12. Click the link below the checkmark under Domain. This should open the application in your browser and display a Congratulations message.
+
+
+## 5. **Deploy to Elastic Beanstalk**: 
+   The application is configured for deployment via **TravisCI**. It automatically pushes the changes to **Elastic Beanstalk** whenever you push to the `main` branch. Check `.travis.yml` file and add your env information. Add your `Environment Variables` in settings of your Travis.ci repository.
+
+## 6. **Continuous Integration with TravisCI**: 
+   When you push changes to the `main` branch, **TravisCI** will automatically trigger a build and deployment process, ensuring that your app is always up-to-date in the cloud.
+
+
+# Write your React application on a ready-to-use infrastructure — good luck and happy coding! <3
+
+
